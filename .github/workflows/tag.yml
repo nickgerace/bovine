@@ -1,0 +1,38 @@
+on:
+  push:
+    tags: ['*']
+name: tag
+jobs:
+  publish:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: gfold
+            asset_name: gfold-linux-gnu-amd64
+          - os: windows-latest
+            artifact_name: gfold.exe
+            asset_name: gfold-windows-amd64
+          - os: macos-latest
+            artifact_name: gfold
+            asset_name: gfold-macos-amd64
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --locked
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: target/release/${{ matrix.artifact_name }}
+          asset_name: ${{ matrix.asset_name }}
+          tag: ${{ github.ref }}
+          prerelease: contains(${{ github.ref }}, "rc")
+          release_name: "Bovine ${{ github.ref }}"
