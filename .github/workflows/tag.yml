@@ -9,14 +9,14 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            artifact_name: gfold
-            asset_name: gfold-linux-gnu-amd64
+            artifact_name: bovine
+            asset_name: bovine-linux-gnu-amd64
           - os: windows-latest
-            artifact_name: gfold.exe
-            asset_name: gfold-windows-amd64
+            artifact_name: bovine.exe
+            asset_name: bovine-windows-amd64
           - os: macos-latest
-            artifact_name: gfold
-            asset_name: gfold-macos-amd64
+            artifact_name: bovine
+            asset_name: bovine-macos-amd64
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
@@ -28,11 +28,19 @@ jobs:
         with:
           command: build
           args: --locked
+      - run: |
+          if [ "${{ github.ref }}" = *"rc"* ]; then
+            echo "PRERELEASE=true" >> $GITHUB_ENV
+          else
+            echo "PRERELEASE=false" >> $GITHUB_ENV
+          fi
+          echo "RELEASE_VERSION=${GITHUB_REF:11}" >> $GITHUB_ENV
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: target/release/${{ matrix.artifact_name }}
           asset_name: ${{ matrix.asset_name }}
           tag: ${{ github.ref }}
-          prerelease: contains(${{ github.ref }}, "rc")
-          release_name: "Bovine ${{ github.ref }}"
+          prerelease: ${{ env.PRERELEASE }}
+          release_name: "Bovine ${{ env.RELEASE_VERSION }}"
+          body: "Please refer to CHANGELOG.md for information on this release."
