@@ -44,8 +44,8 @@ jobs:
           version = "VERSION=" + "${{ github.ref }}".replace("refs/tags/", "")
           print(version)
 
-          subprocess.run["echo", version, ">>", github_env]
-          subprocess.run["echo", prerelease, ">>", github_env]
+          subprocess.run(["echo", version, ">>", github_env])
+          subprocess.run(["echo", prerelease, ">>", github_env])
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
