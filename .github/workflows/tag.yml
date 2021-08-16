@@ -29,18 +29,20 @@ jobs:
           command: build
           args: --locked
       - run: |
-          if [ "${{ github.ref }}" = *"rc"* ]; then
+          if [ "${{ github.ref }}" = "*rc*" ]; then
             echo "PRERELEASE=true" >> $GITHUB_ENV
           else
             echo "PRERELEASE=false" >> $GITHUB_ENV
           fi
-          echo "RELEASE_VERSION=${GITHUB_REF:11}" >> $GITHUB_ENV
+          echo $PRERELEASE
+          echo "VERSION=${GITHUB_REF:11}" >> $GITHUB_ENV
+          echo $VERSION
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: target/release/${{ matrix.artifact_name }}
+          file: ${{ matrix.artifact_name }}
           asset_name: ${{ matrix.asset_name }}
           tag: ${{ github.ref }}
           prerelease: ${{ env.PRERELEASE }}
-          release_name: "Bovine ${{ env.RELEASE_VERSION }}"
+          release_name: "Bovine ${{ env.VERSION }}"
           body: "Please refer to CHANGELOG.md for information on this release."
