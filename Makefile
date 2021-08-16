@@ -28,3 +28,9 @@ scan:
 bloat:
 	cd $(MAKEPATH); cargo bloat --release
 	cd $(MAKEPATH); cargo bloat --release --crates
+
+release:
+	cd $(MAKEPATH); cargo +nightly fmt --all -- --check
+	cd $(MAKEPATH); cargo clippy -- -D warnings
+	cd $(MAKEPATH); cargo test -- --nocapture
+	cd $(MAKEPATH); cargo build --release

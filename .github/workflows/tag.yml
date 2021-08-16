@@ -25,17 +25,26 @@ jobs:
           toolchain: stable
           override: true
       - run: cargo build --release --locked
-      - run: |
-          if [ $(echo ${{ github.ref }} | grep "rc") ]; then
-            echo "PRERELEASE=true" >> $GITHUB_ENV
-          else
-            echo "PRERELEASE=false" >> $GITHUB_ENV
-          fi
-          echo $PRERELEASE
-      - run: |
-          VERSION=$(echo ${{ github.ref }} | sed 's/refs\/tags\///g')
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo $VERSION
+      - shell: python
+        run: |
+          import platform
+          newline = "\n"
+          if platform.system().lower() == "windows":
+            newline = "\r\n"
+          f = open("$GITHUB_ENV", "a")
+          if "rc" in "${{ github.ref }}":
+            ptrue = "PRERELEASE=true"
+            f.write(ptrue + newline)
+            print(ptrue)
+          else:
+            pfalse = "PRERELEASE=false"
+            f.write(pfalse + newline)
+            print(pfalse)
+          version = "${{ github.ref }}".replace("refs/tags/", "")
+          version = "VERSION=" + version
+          f.write(version + newline)
+          print(version)
+          f.close()
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
