@@ -35,7 +35,9 @@ jobs:
             echo "PRERELEASE=false" >> $GITHUB_ENV
           fi
           echo $PRERELEASE
-          echo "VERSION=${GITHUB_REF:11}" >> $GITHUB_ENV
+      - run: |
+          VERSION=$(echo ${{ github.ref }} | sed 's/refs\/tags\///g')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo $VERSION
       - uses: svenstaro/upload-release-action@v2
         with:
