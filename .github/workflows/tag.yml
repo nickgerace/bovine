@@ -2,6 +2,8 @@ on:
   push:
     tags: ['*']
 name: tag
+env:
+  TO_APPEND: $GITHUB_ENV
 jobs:
   publish:
     runs-on: ${{ matrix.os }}
@@ -31,20 +33,18 @@ jobs:
           newline = "\n"
           if platform.system().lower() == "windows":
             newline = "\r\n"
-          f = open("$GITHUB_ENV", "a")
+
+          prerelease = "PRERELEASE=false"
           if "rc" in "${{ github.ref }}":
-            ptrue = "PRERELEASE=true"
-            f.write(ptrue + newline)
-            print(ptrue)
-          else:
-            pfalse = "PRERELEASE=false"
-            f.write(pfalse + newline)
-            print(pfalse)
-          version = "${{ github.ref }}".replace("refs/tags/", "")
-          version = "VERSION=" + version
-          f.write(version + newline)
+            prerelease = "PRERELEASE=true"
+          print(prerelease)
+
+          version = "VERSION=" + "${{ github.ref }}".replace("refs/tags/", "")
           print(version)
-          f.close()
+
+          with open('${{ env.TO_APPEND }}', 'a') as f:
+            f.write(prerelease + newline)
+            f.write(version + newline)
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
