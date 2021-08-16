@@ -2,8 +2,6 @@ on:
   push:
     tags: ['*']
 name: tag
-env:
-  TO_APPEND: $GITHUB_ENV
 jobs:
   publish:
     runs-on: ${{ matrix.os }}
@@ -29,7 +27,9 @@ jobs:
       - run: cargo build --release --locked
       - shell: python
         run: |
+          import os
           import platform
+
           newline = "\n"
           if platform.system().lower() == "windows":
             newline = "\r\n"
@@ -42,7 +42,7 @@ jobs:
           version = "VERSION=" + "${{ github.ref }}".replace("refs/tags/", "")
           print(version)
 
-          with open('${{ env.TO_APPEND }}', 'a') as f:
+          with open('os.getenv("GITHUB_ENV")', 'a') as f:
             f.write(prerelease + newline)
             f.write(version + newline)
       - uses: svenstaro/upload-release-action@v2
