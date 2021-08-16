@@ -27,12 +27,14 @@ jobs:
       - run: cargo build --release --locked
       - shell: python
         run: |
-          import os
           import platform
+          import subprocess
 
           newline = "\n"
+          github_env = "$GITHUB_ENV"
           if platform.system().lower() == "windows":
             newline = "\r\n"
+            github_env = "$env:GITHUB_ENV"
 
           prerelease = "PRERELEASE=false"
           if "rc" in "${{ github.ref }}":
@@ -42,9 +44,8 @@ jobs:
           version = "VERSION=" + "${{ github.ref }}".replace("refs/tags/", "")
           print(version)
 
-          with open('os.getenv("GITHUB_ENV")', 'a') as f:
-            f.write(prerelease + newline)
-            f.write(version + newline)
+          subprocess.run["echo", version, ">>", github_env]
+          subprocess.run["echo", prerelease, ">>", github_env]
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
