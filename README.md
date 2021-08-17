@@ -53,10 +53,11 @@ The following convenience script can be used on macOS and Linux `amd64` systems 
 ```sh
 (
     OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+    if [ "$OS" = "linux" ]; then OS=linux-gnu; fi
     LATEST=$(curl -s https://api.github.com/repos/nickgerace/bovine/releases/latest | jq -r ".tag_name")
     wget -O bovine https://github.com/nickgerace/bovine/releases/download/$LATEST/bovine-$OS-amd64
     chmod +x bovine
-    mv bovine /usr/local/bin/bovine
+    sudo mv bovine /usr/local/bin/bovine
 )
 ```
 
