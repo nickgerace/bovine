@@ -1,5 +1,193 @@
-# BOVINE
+# Bovine
 
-UExFQVNFIFNUQU5EIEJZLiBBIE1BTkFHRVIgRk9SIFNJTkdMRSBOT0RFIFJBTkNIRVIgQ0xVU1RFUlMuIFRISVMgVFVFU0RBWS4gVEhJUyBNRVNTQUdFIFJFUEVBVFMuIFBMRUFTRSBTVEFORCBCWS4gQSBNQU5BR0VSIEZPUiBTSU5HTEUgTk9ERSBSQU5DSEVSIENMVVNURVJTLiBUSElTIFRVRVNEQVkuIFRISVMgTUVTU0FHRSBSRVBFQVRTLiBQTEVBU0UgU1RBTkQgQlkuIEEgTUFOQUdFUiBGT1IgU0lOR0xFIE5PREUgUkFOQ0hFUiBDTFVTVEVSUy4gVEhJUyBUVUVTREFZLiBUSElTIE1FU1NBR0UgUkVQRUFUUy4gUExFQVNFIFNUQU5EIEJZLiBBIE1BTkFHRVIgRk9SIFNJTkdMRSBOT0RFIFJBTkNIRVIgQ0xVU1RFUlMuIFRISVMgVFVFU0RBWS4gVEhJUyBNRVNTQUdFIFJFUEVBVFMuIFBMRUFTRSBTVEFORCBCWS4gQSBNQU5BR0VSIEZPUiBTSU5HTEUgTk9ERSBSQU5DSEVSIENMVVNURVJTLiBUSElTIFRVRVNEQVkuIFRISVMgTUVTU0FHRSBSRVBFQVRTLiBQTEVBU0UgU1RBTkQgQlkuIEEgTUFOQUdFUiBGT1IgU0lOR0xFIE5PREUgUkFOQ0hFUiBDTFVTVEVSUy4gVEhJUyBUVUVTREFZLiBUSElTIE1FU1NBR0UgUkVQRUFUUy4gUExFQVNFIFNUQU5EIEJZLiBBIE1BTkFHRVIgRk9SIFNJTkdMRSBOT0RFIFJBTkNIRVIgQ0xVU1RFUlMuIFRISVMgVFVFU0RBWS4gVEhJUyBNRVNTQUdFIFJFUEVBVFMuIFBMRUFTRSBTVEFORCBCWS4gQSBNQU5BR0VSIEZPUiBTSU5HTEUgTk9ERSBSQU5DSEVSIENMVVNURVJTLiBUSElTIFRVRVNEQVkuIFRISVMgTUVTU0FHRSBSRVBFQVRTLiBQTEVBU0UgU1RBTkQgQlkuIEEgTUFOQUdFUiBGT1IgU0lOR0xFIE5PREUgUkFOQ0hFUiBDTFVTVEVSUy4gVEhJUyBUVUVTREFZLiBUSElTIE1FU1NBR0UgUkVQRUFUUy4gUExFQVNFIFNUQU5EIEJZLiBBIE1BTkFHRVIgRk9SIFNJTkdMRSBOT0RFIFJBTkNIRVIgQ0xVU1RFUlMuIFRISVMgVFVFU0RBWS4gVEhJUyBNRVNTQUdFIFJFUEVBVFMuIFBMRUFTRSBTVEFORCBCWS4gQSBNQU5BR0VSIEZPUiBTSU5HTEUgTk9ERSBSQU5DSEVSIENMVVNURVJTLiBUSElTIFRVRVNEQVkuIFRISVMgTUVTU0FHRSBSRVBFQVRTLiBQTEVBU0UgU1RBTkQgQlkuIEEgTUFOQUdFUiBGT1IgU0lOR0xFIE5PREUgUkFOQ0hFUiBDTFVTVEVSUy4gVEhJUyBUVUVTREFZLiBUSElTIE1FU1NBR0UgUkVQRUFUUy4gUExFQVNFIFNUQU5EIEJZLiBBIE1BTkFHRVIgRk9SIFNJTkdMRSBOT0RFIFJBTkNIRVIgQ0xVU1RFUlMuIFRISVMgVFVFU0RBWS4gVEhJUyBNRVNTQUdFIFJFUEVBVFMuIFBMRUFTRSBTVEFORCBCWS4gQSBNQU5BR0VSIEZPUiBTSU5HTEUgTk9ERSBSQU5DSEVSIENMVVNURVJTLiBUSElTIFRVRVNEQVkuIFRISVMgTUVTU0FHRSBSRVBFQVRTLiBQTEVBU0UgU1RBTkQgQlkuIEEgTUFOQUdFUiBGT1IgU0lOR0xFIE5PREUgUkFOQ0hFUiBDTFVTVEVSUy4gVEhJUyBUVUVTREFZLiBUSElTIE1FU1NBR0UgUkVQRUFUUy4gUExFQVNFIFNUQU5EIEJZLiBBIE1BTkFHRVIgRk9SIFNJTkdMRSBOT0RFIFJBTkNIRVIgQ0xVU1RFUlMuIFRISVMgVFVFU0RBWS4gVEhJUyBNRVNTQUdFIFJFUEVBVFMuIFBMRUFTRSBTVEFORCBCWS4gQSBNQU5BR0VSIEZPUiBTSU5HTEUgTk9ERSBSQU5DSEVSIENMVVNURVJTLiBUSElTIFRVRVNEQVkuIFRISVMgTUVTU0FHRSBSRVBFQVRTLiBQTEVBU0UgU1RBTkQgQlkuIEEgTUFOQUdFUiBGT1IgU0lOR0xFIE5PREUgUkFOQ0hFUiBDTFVTVEVSUy4gVEhJUyBUVUVTREFZLiBUSElTIE1FU1NBR0UgUkVQRUFUUy4gUExFQVNFIFNUQU5EIEJZLiBBIE1BTkFHRVIgRk9SIFNJTkdMRSBOT0RFIFJBTkNIRVIgQ0xVU1RFUlMuIFRISVMgVFVFU0RBWS4gVEhJUyBNRVNTQUdFIFJFUEVBVFMu
+[![tag](https://img.shields.io/github/v/tag/nickgerace/bovine?label=version&style=flat-square&logo=github&color=blue)](https://github.com/nickgerace/bovine/releases/latest)
+[![crates.io](https://img.shields.io/crates/v/bovine?style=flat-square&logo=rust&color=orange)](https://crates.io/crates/bovine)
+[![license](https://img.shields.io/github/license/nickgerace/bovine?style=flat-square&color=green)](./LICENSE)
 
-![Please stand by screen indicating that something is about to begin](https://media.giphy.com/media/3oz8xOvhnSpVOs9xza/giphy.gif)
+Manage single node Rancher clusters with a single binary, `bovine`.
+
+```
+% bovine run
+Pulling [rancher/rancher:latest], this may take awhile...
+Rancher container is running: ead7ff0c711a
+
+% bovine list
+ead7ff0c711a [rancher/rancher:latest] (running) > Up 5 seconds
+
+% bovine stop --all
+Stopped Rancher container: ead7ff0c711a
+```
+
+## Background
+
+`bovine` is simultaneously designed to be an accessible entrypoint into using both Rancher (and Kubernetes) and an efficient manager for experienced users working with single node Rancher clusters.
+
+- New to Rancher or Kubernetes?
+  - `bovine` aims to be one of the first stepping stones into trying both technologies for the first time.
+  - Those familiar with Docker, but unfamiliar with Kubernetes or Rancher, should feel right at home.
+  - Creating your first cluster requires no arguments, flags, or setup. Just have Docker running, execute `bovine run`, navigate to your favorite browser, and access `127.0.0.1`.
+- Advanced User?
+  - Single node Rancher installations are useful for trying out new Rancher releases, provisioning downstream clusters for development, and general lab usage.
+  - `bovine` is designed for multi-platform use (no need to maintain both Bash and PowerShell scripts).
+  - Bring your own Docker images, specify your own Docker socket location, choose some flags, test and your upgrade scenarios without needing to consult the docs.
+
+## Prerequisites
+
+The only prerequisite for `bovine` is the [Docker](https://docs.docker.com/get-docker/) daemon.
+Customize your Docker installation to your liking since `bovine` does not require the Docker CLI and can use a custom socket path.
+
+## Installation
+
+`bovine` is designed to work on any tier one Rust platform that can interface with Docker.
+You can install and [upgrade](./docs/EXTRA.md) the application by using `cargo`.
+
+```sh
+cargo install bovine
+```
+
+You can install `cargo` via [rustup](https://rustup.rs/) (recommended) or your preferred package manager.
+
+If you do not want to install `cargo`, you can download a binary from the [releases page](https://github.com/nickgerace/bovine/releases).
+The following convenience script can be used on macOS and Linux `amd64` systems (requires `wget`, `jq`, and `curl` to be installed):
+
+```sh
+(
+    OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+    LATEST=$(curl -s https://api.github.com/repos/nickgerace/bovine/releases/latest | jq -r ".tag_name")
+    wget -O bovine https://github.com/nickgerace/bovine/releases/download/$LATEST/bovine-$OS-amd64
+    chmod +x bovine
+    mv bovine /usr/local/bin/bovine
+)
+```
+
+## Usage
+
+By default, `bovine run` will create and run a Rancher container with common settings.
+See all options with the following command:
+
+```
+% bovine run --help
+```
+
+> For more information, consult the official [Rancher single node documentation](https://rancher.com/docs/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/).
+
+What about saving your settings for future use?
+You can do it with valid JSON.
+Let's save it to a file.
+
+```
+% bovine run --dry-run > dry.json
+```
+
+You can also obtain the config and status for a container, whether it is running or not.
+Since this information is bundled into JSON, let's save it to another file.
+
+```
+% bovine get ead7ff0c711a > get.json
+```
+
+We've probably built a lot of Rancher containers while testing out these commands.
+Let's start over from the beginning.
+
+```
+% bovine stop --all --delete
+Stopped Rancher container: ead7ff0c711a
+Deleted Rancher container: ead7ff0c711a
+Deleted volumes for container: ead7ff0c711a
+Container not modified (may have already been stopped): d39cca6514d8
+Deleting Rancher container: d39cca6514d8
+Deleted volumes for container: d39cca6514d8
+```
+
+There's a new version of Rancher out!
+Let's upgrade our `stable` Rancher instance to `latest`.
+
+```
+% bovine upgrade bc3ad1bf4fd7 latest
+Stopped Rancher container: bc3ad1bf4fd7
+Created temporary container for volume backup: b6f3adef1c23
+Image found locally: [rancher/rancher:latest]
+Rancher container is running: 9cf5f2ead13d
+Upgrade from [rancher/rancher:stable] to [rancher/rancher:latest] complete
+```
+
+Forgot the name of your one and only `bovine` container?
+No problem.
+
+```
+% bovine upgrade $(bovine list --short) latest
+```
+
+## Troubleshooting
+
+If we need to examine a live cluster, we can follow its container logs.
+
+```
+% bovine logs 8fccc0c04184 --follow
+```
+
+We can also dump the logs into a file.
+
+```
+% bovine logs 8fccc0c04184 > bovine.log
+```
+
+If you have found a bug that's likely to be unrelated to Rancher, you can pin down your version information to dive deeper.
+Let's print that information out, just to get the hang of it.
+
+```
+% bovine version
+bovine:
+  version: 0.1.0
+  os/arch: macos/x86_64
+docker:
+  version: 20.10.7
+  os/arch: linux/amd64
+  api version: 1.41
+  linux kernel version: 5.10.25-linuxkit
+  git commit: b0f5bc3
+```
+
+If you are using a custom socket path, `bovine` will confirm that the information was gathered from there.
+Let's try it on a Linux host.
+
+```
+% bovine --docker-socket-path /foo/bar/docker.sock version
+bovine:
+  version: 0.1.0
+  os/arch: linux/x86_64
+docker:
+  version: 20.10.7
+  os/arch: linux/amd64
+  api version: 1.41
+  linux kernel version: 5.8.0-63-generic
+  git commit: b0f5bc3
+  socket path: /foo/bar/docker.sock
+```
+
+Maybe Docker is the issue in your troubleshooting session?
+`bovine` will print some version information anyway, just in case.
+
+```
+% bovine version
+bovine:
+  version: 0.1.0
+  os/arch: macos/x86_64
+docker:
+  could not connect to docker (check if docker is running)
+```
+
+## Why should I use this instead of my current workflow?
+
+Let's talk freely here.
+Isn't this just a glorified version of Bash scripts with `docker` CLI commands?
+`bovine` does ultimately leverage the Docker daemon as its "engine", but there's more to its design than that.
+Some notes that may provide context:
+
+- `bovine` may use other container runtimes in the future.
+  - In this scenario, users would have the option to choose between multiple runtimes (depending on the host OS).
+- Multi-platform support is essential, but especially so for an application focused on being a "first step" into trying out Rancher and/or Kubernetes.
+- Error handling, maintainability, UX, and "refactorability" are central to its design.
+- Even if the above points were non-existent, `bovine` tries to make the Kubernetes and/or Rancher experience easier for newcomers.
+  - Sometimes, a small abstraction makes the difference between a user trying out and hesitantly skipping underlying software.
+- `bovine` provides one-button automation, such as stopping, deleting, and removing volumes for containers without affecting other containers and without checking IDs.
