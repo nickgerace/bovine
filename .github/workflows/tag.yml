@@ -25,7 +25,7 @@ jobs:
           toolchain: stable
           override: true
       - run: cargo build --release --locked
-      - if: matrix.os != "windows-latest"
+      - if: runner.os != 'Windows'
         run: |
           if [ $(echo ${{ github.ref }} | grep "rc") ]; then
             echo "PRERELEASE=true" >> $GITHUB_ENV
@@ -37,7 +37,7 @@ jobs:
           VERSION=$(echo ${{ github.ref }} | sed 's/refs\/tags\///g')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo $VERSION
-      - if: matrix.os == "windows-latest"
+      - if: runner.os == 'Windows'
         shell: powershell
         run: |
           $full = "${{ github.ref }}"
