@@ -16,7 +16,7 @@ jobs:
             asset_name: bovine-windows-amd64
           - os: macos-latest
             artifact_name: bovine
-            asset_name: bovine-macos-amd64
+            asset_name: bovine-darwin-amd64
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
@@ -29,14 +29,16 @@ jobs:
         run: |
           if [ $(echo ${{ github.ref }} | grep "rc") ]; then
             echo "PRERELEASE=true" >> $GITHUB_ENV
+            echo "PRERELEASE=true"
           else
             echo "PRERELEASE=false" >> $GITHUB_ENV
+            echo "PRERELEASE=false"
           fi
           echo $PRERELEASE
 
           VERSION=$(echo ${{ github.ref }} | sed 's/refs\/tags\///g')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo $VERSION
+          echo "VERSION=$VERSION"
       - if: runner.os == 'Windows'
         shell: powershell
         run: |
