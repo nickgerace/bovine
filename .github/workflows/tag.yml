@@ -25,27 +25,34 @@ jobs:
           toolchain: stable
           override: true
       - run: cargo build --release --locked
-      - shell: python
+      - if: matrix.os != "windows-latest"
         run: |
-          import platform
-          import subprocess
+          if [ $(echo ${{ github.ref }} | grep "rc") ]; then
+            echo "PRERELEASE=true" >> $GITHUB_ENV
+          else
+            echo "PRERELEASE=false" >> $GITHUB_ENV
+          fi
+          echo $PRERELEASE
 
-          newline = "\n"
-          github_env = "$GITHUB_ENV"
-          if platform.system().lower() == "windows":
-            newline = "\r\n"
-            github_env = "$env:GITHUB_ENV"
+          VERSION=$(echo ${{ github.ref }} | sed 's/refs\/tags\///g')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo $VERSION
+      - if: matrix.os == "windows-latest"
+        shell: powershell
+        run: |
+          $full = "${{ github.ref }}"
 
-          prerelease = "PRERELEASE=false"
-          if "rc" in "${{ github.ref }}":
-            prerelease = "PRERELEASE=true"
-          print(prerelease)
+          if ( $full -like '*rc*' ) {
+            echo "PRERELEASE=true" >> $env:GITHUB_ENV
+            echo "PRERELEASE=true"
+          } else {
+            echo "PRERELEASE=false" >> $env:GITHUB_ENV
+            echo "PRERELEASE=false"
+          }
 
-          version = "VERSION=" + "${{ github.ref }}".replace("refs/tags/", "")
-          print(version)
-
-          subprocess.run(["echo", version, ">>", github_env])
-          subprocess.run(["echo", prerelease, ">>", github_env])
+          $trimmed = $full -replace 'refs/tags/',''
+          echo "VERSION=$trimmed" >> $env:GITHUB_ENV
+          echo "VERSION=$trimmed"
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
