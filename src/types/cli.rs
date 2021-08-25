@@ -162,7 +162,7 @@ pub struct LaunchFlags {
     pub audit_level: usize,
     #[clap(long, about = "Host path to audit log destination")]
     pub audit_log: Option<String>,
-    #[clap(long, about = "Set bootstrap password (>=v2.6.0)")]
+    #[clap(long, short, about = "Set bootstrap password (>=v2.6)")]
     pub bootstrap_password: Option<String>,
     #[clap(long, about = "Path to the certificate authority’s certificate")]
     pub ca_certs: Option<String>,
@@ -172,6 +172,7 @@ pub struct LaunchFlags {
     pub enable_restricted_default_admin: bool,
     #[clap(
         long,
+        visible_alias = "fp",
         about = "Always pull the Rancher image, even if it exists locally"
     )]
     pub force_pull: bool,
@@ -195,6 +196,12 @@ pub struct LaunchFlags {
     pub host443: String,
     #[clap(long, about = "Path to CA root certificate for validating services")]
     pub host_certs: Option<String>,
+    #[clap(
+        long,
+        short,
+        about = "Disable CA certs (useful when using localhost tunneling services, like ngrok)"
+    )]
+    pub no_cacerts: bool,
     #[clap(
         long,
         about = "Host path for saving Rancher's persistent data from the embedded etcd database"
