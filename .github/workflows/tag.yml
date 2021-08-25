@@ -13,7 +13,7 @@ jobs:
             asset_name: bovine-linux-gnu-amd64
           - os: windows-latest
             artifact_name: bovine.exe
-            asset_name: bovine-windows-amd64
+            asset_name: bovine-windows-amd64.exe
           - os: macos-latest
             artifact_name: bovine
             asset_name: bovine-darwin-amd64

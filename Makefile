@@ -1,9 +1,12 @@
 MAKEPATH:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BINARY:=$(MAKEPATH)/target/release/bovine
 
-all: fmt build
+all: prepare build
 
-final: prepare scan build
+final: update prepare scan build
+
+debug: prepare
+	cd $(MAKEPATH); cargo build
 
 build:
 	cd $(MAKEPATH); cargo build --release
@@ -11,12 +14,7 @@ build:
 	strip $(BINARY)
 	du -h $(BINARY)
 
-fmt:
-	cd $(MAKEPATH); cargo +nightly fmt
-	cd $(MAKEPATH); cargo clippy
-
 prepare:
-	cd $(MAKEPATH); cargo update
 	cd $(MAKEPATH); cargo fix --edition-idioms --allow-dirty --allow-staged
 	cd $(MAKEPATH); cargo +nightly fmt
 	cd $(MAKEPATH); cargo clippy --all-features --all-targets
@@ -24,6 +22,9 @@ prepare:
 scan:
 	cd $(MAKEPATH); cargo +nightly udeps
 	cd $(MAKEPATH); cargo audit
+
+update:
+	cd $(MAKEPATH); cargo update
 
 bloat:
 	cd $(MAKEPATH); cargo bloat --release

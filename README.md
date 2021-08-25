@@ -178,6 +178,20 @@ docker:
   could not connect to docker (check if docker is running)
 ```
 
+### Windows
+
+If you are having issues with the native Windows binary, the following tips may help:
+
+- [PowerShell](https://github.com/PowerShell/PowerShell) 7.1+ might need to be installed and used when executing the `bovine` binary.
+- Instead of accessing `localhost`, users may have to navigate to `host.docker.internal` in their browser of choice.
+- Rancher does not support native Windows images for its local cluster at this time, so Docker must be configured to deploy Linux containers.
+
+### Other
+
+You may notice that `bovine` runs Rancher containers in privileged mode.
+This is required as of Rancher v2.5 (and is not a `bovine` requirement).
+More information can be found in the [official docs](https://rancher.com/docs/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5).
+
 ## Why should I use this instead of my current workflow?
 
 Let's talk freely here.
