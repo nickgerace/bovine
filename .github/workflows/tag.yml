@@ -63,4 +63,4 @@ jobs:
           tag: ${{ github.ref }}
           prerelease: ${{ env.PRERELEASE }}
           release_name: "Bovine ${{ env.VERSION }}"
-          body: "Please refer to CHANGELOG.md for information on this release."
+          body: "Please refer to **[CHANGELOG.md](https://github.com/nickgerace/bovine/blob/main/CHANGELOG.md)** for information on this release."

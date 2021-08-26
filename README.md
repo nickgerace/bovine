@@ -1,8 +1,9 @@
 # Bovine
 
-[![tag](https://img.shields.io/github/v/tag/nickgerace/bovine?label=version&style=flat-square&logo=github&color=blue)](https://github.com/nickgerace/bovine/releases/latest)
+[![release](https://img.shields.io/github/v/release/nickgerace/bovine?sort=semver&style=flat-square&logo=github&color=blue)](https://github.com/nickgerace/bovine/releases/latest)
 [![crates.io](https://img.shields.io/crates/v/bovine?style=flat-square&logo=rust&color=orange)](https://crates.io/crates/bovine)
-[![license](https://img.shields.io/github/license/nickgerace/bovine?style=flat-square&color=green)](./LICENSE)
+[![build](https://img.shields.io/github/workflow/status/nickgerace/bovine/merge?style=flat-square)](https://github.com/nickgerace/bovine/actions)
+[![license](https://img.shields.io/github/license/nickgerace/bovine?style=flat-square&color=purple)](./LICENSE)
 
 Manage single node Rancher clusters with a single binary, `bovine`.
 
