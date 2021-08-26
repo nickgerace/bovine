@@ -1,3 +1,4 @@
+use bollard::container::LogOutput;
 use thiserror::Error;
 
 #[derive(Error, Debug)]
@@ -28,6 +29,8 @@ pub enum Error {
     OCIImageTagInvalid(String),
     #[error("splitting OCI image name into its short name and tag failed: {0}")]
     OCIImageSplitFailure(String),
+    #[error("could not find bootstrap password within the line: {0}")]
+    LogMessageScrapingFailure(LogOutput),
 
     #[error("container not managed by Bovine")]
     NotBovineContainer,
