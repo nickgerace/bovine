@@ -122,6 +122,7 @@ pub struct Stop {
     pub container_id: Option<String>,
     #[clap(
         long,
+        short,
         about = "Delete container after stopping it (warning: this flag will permanently delete selected container(s))"
     )]
     pub delete: bool,
