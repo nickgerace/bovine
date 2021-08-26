@@ -80,6 +80,13 @@ pub struct Logs {
     pub container_id: Option<String>,
     #[clap(long, short, about = "Follow logs")]
     pub follow: bool,
+    #[clap(
+        long,
+        short = 'p',
+        visible_aliases = &["password", "pw"],
+        about = "Attempt to find the bootstrap password (>=v2.6) (caution: finding the bootstrap password relies on parsing Rancher logs and is not an API call)"
+    )]
+    pub find_bootstrap_password: bool,
 }
 
 #[derive(Clap, Debug)]

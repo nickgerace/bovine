@@ -1,4 +1,4 @@
-use crate::{docker, error::Error, types::cli::Logs};
+use crate::{consts, docker, error::Error, types::cli::Logs};
 use anyhow::Result;
 use bollard::container::LogsOptions;
 use futures::StreamExt;
@@ -18,19 +18,57 @@ pub async fn logs(opt: &Logs, docker_socket_path: Option<String>) -> Result<()> 
         }
     };
 
+    // Only use the follow value if we are not looking for the bootstrap password.
     let mut stream = docker.logs::<String>(
         &id,
         Some(LogsOptions {
-            follow: opt.follow,
+            follow: match opt.find_bootstrap_password {
+                true => false,
+                false => opt.follow,
+            },
             stdout: true,
             stderr: true,
             ..Default::default()
         }),
     );
-    while let Some(msg) = stream.next().await {
-        match msg {
-            Ok(o) => print!("{}", o),
-            Err(e) => eprint!("{}", e),
+
+    // We use a match statement with repeated code here because the alternative would be to check
+    // if we are looking for the bootstrap password at every iteration of the stream. We only want
+    // to perform the check once for optimal performance.
+    match opt.find_bootstrap_password {
+        true => {
+            while let Some(msg) = stream.next().await {
+                match msg {
+                    Ok(o)
+                        if o.to_string()
+                            .contains(consts::rancher::BOOTSTRAP_PASSWORD_SEARCH) =>
+                    {
+                        // We convert the log message to a "String" twice since this match guard
+                        // will only pass once. This double computation can only occur once due
+                        // to the "break" statement.
+                        match o
+                            .to_string()
+                            .rsplit(consts::rancher::BOOTSTRAP_PASSWORD_SEARCH)
+                            .next()
+                        {
+                            Some(s) => print!("{}", s),
+                            None => return Err(Error::LogMessageScrapingFailure(o).into()),
+                        }
+                        // Break out of the stream rather than returning to the calling function.
+                        break;
+                    }
+                    Ok(_) => {}
+                    Err(e) => eprint!("{}", e),
+                }
+            }
+        }
+        false => {
+            while let Some(msg) = stream.next().await {
+                match msg {
+                    Ok(o) => print!("{}", o),
+                    Err(e) => eprint!("{}", e),
+                }
+            }
         }
     }
     Ok(())
