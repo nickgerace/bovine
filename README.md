@@ -120,6 +120,30 @@ No problem.
 % bovine upgrade $(bovine list --short) latest
 ```
 
+When a new version of Rancher comes out using the `latest` [tag](https://hub.docker.com/r/rancher/rancher/tags) (the default for `bovine run`), you may need to force pull the image.
+
+```
+% bovine run --force-pull
+```
+
+When using localhost tunneling (e.g [ngrok](https://ngrok.com/)), you may need to set `--no-cacerts` for provisioning to function properly.
+
+```
+% bovine run -n
+```
+
+If you are working with Rancher >=v2.6, you may need to find the bootstrap password in order to access the dashboard.
+
+```
+% bovine logs -p
+```
+
+You can also set the bootstrap password upon startup.
+
+```
+% bovine run -b <password>
+```
+
 ## Troubleshooting
 
 If we need to examine a live cluster, we can follow its container logs.
@@ -140,7 +164,7 @@ Let's print that information out, just to get the hang of it.
 ```
 % bovine version
 bovine:
-  version: 0.1.0
+  version: 0.1.2
   os/arch: macos/x86_64
 docker:
   version: 20.10.7
@@ -156,7 +180,7 @@ Let's try it on a Linux host.
 ```
 % bovine --docker-socket-path /foo/bar/docker.sock version
 bovine:
-  version: 0.1.0
+  version: 0.1.2
   os/arch: linux/x86_64
 docker:
   version: 20.10.7
@@ -173,7 +197,7 @@ Maybe Docker is the issue in your troubleshooting session?
 ```
 % bovine version
 bovine:
-  version: 0.1.0
+  version: 0.1.2
   os/arch: macos/x86_64
 docker:
   could not connect to docker (check if docker is running)
