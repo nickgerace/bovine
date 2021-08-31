@@ -15,6 +15,8 @@ pub enum Error {
         "restart error occurred (perhaps there is already a container using the same port(s))"
     )]
     DockerContainerRestartFailure,
+    #[error("could not find bootstrap password within the logs")]
+    BootstrapPasswordNotFound,
 
     #[error("could not find config for inspected container: {0}")]
     DockerContainerConfigNotFound(String),
@@ -30,7 +32,7 @@ pub enum Error {
     #[error("splitting OCI image name into its short name and tag failed: {0}")]
     OCIImageSplitFailure(String),
     #[error("could not find bootstrap password within the line: {0}")]
-    LogMessageScrapingFailure(LogOutput),
+    BootstrapPasswordScrapingFailure(LogOutput),
 
     #[error("container not managed by Bovine")]
     NotBovineContainer,
