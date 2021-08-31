@@ -75,7 +75,7 @@ pub struct List {
 #[derive(Clap, Debug)]
 pub struct Logs {
     #[clap(
-        about = "ID of the Rancher container running or not-running (if empty, will select a Rancher container at random)"
+        about = "ID of the Rancher container running or not-running (if empty, it will select a Rancher container at random, which is useful when only one container is running)"
     )]
     pub container_id: Option<String>,
     #[clap(long, short, about = "Follow logs")]
@@ -87,6 +87,13 @@ pub struct Logs {
         about = "Attempt to find the bootstrap password (>=v2.6) (caution: finding the bootstrap password relies on parsing Rancher logs and is not an API call)"
     )]
     pub find_bootstrap_password: bool,
+    #[clap(
+        long,
+        short,
+        requires = "find-bootstrap-password",
+        about = "Display the entire log line where the bootstrap password was found"
+    )]
+    pub verbose: bool,
 }
 
 #[derive(Clap, Debug)]

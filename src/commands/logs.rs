@@ -43,24 +43,29 @@ pub async fn logs(opt: &Logs, docker_socket_path: Option<String>) -> Result<()> 
                         if o.to_string()
                             .contains(consts::rancher::BOOTSTRAP_PASSWORD_SEARCH) =>
                     {
-                        // We convert the log message to a "String" twice since this match guard
-                        // will only pass once. This double computation can only occur once due
-                        // to the "break" statement.
-                        match o
-                            .to_string()
-                            .rsplit(consts::rancher::BOOTSTRAP_PASSWORD_SEARCH)
-                            .next()
-                        {
-                            Some(s) => print!("{}", s),
-                            None => return Err(Error::LogMessageScrapingFailure(o).into()),
+                        match opt.verbose {
+                            // We convert the log message to a "String" twice since this match guard
+                            // will only pass once. This double computation can only occur once due
+                            // to the "break" statement.
+                            true => print!("{}", o.to_string()),
+                            false => match o
+                                .to_string()
+                                .rsplit(consts::rancher::BOOTSTRAP_PASSWORD_SEARCH)
+                                .next()
+                            {
+                                Some(s) => print!("{}", s),
+                                None => {
+                                    return Err(Error::BootstrapPasswordScrapingFailure(o).into())
+                                }
+                            },
                         }
-                        // Break out of the stream rather than returning to the calling function.
-                        break;
+                        return Ok(());
                     }
                     Ok(_) => {}
                     Err(e) => eprint!("{}", e),
                 }
             }
+            Err(Error::BootstrapPasswordNotFound.into())
         }
         false => {
             while let Some(msg) = stream.next().await {
@@ -69,7 +74,7 @@ pub async fn logs(opt: &Logs, docker_socket_path: Option<String>) -> Result<()> 
                     Err(e) => eprint!("{}", e),
                 }
             }
+            Ok(())
         }
     }
-    Ok(())
 }
