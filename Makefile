@@ -15,6 +15,7 @@ build:
 	du -h $(BINARY)
 
 prepare:
+	cd $(MAKEPATH); cargo update
 	cd $(MAKEPATH); cargo fix --edition-idioms --allow-dirty --allow-staged
 	cd $(MAKEPATH); cargo +nightly fmt
 	cd $(MAKEPATH); cargo clippy --all-features --all-targets
@@ -22,9 +23,6 @@ prepare:
 scan:
 	cd $(MAKEPATH); cargo +nightly udeps
 	cd $(MAKEPATH); cargo audit
-
-update:
-	cd $(MAKEPATH); cargo update
 
 bloat:
 	cd $(MAKEPATH); cargo bloat --release

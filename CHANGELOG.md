@@ -7,7 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-The latest version contains all changes.
+<!-- The latest version contains all changes. -->
+
+### Added
+
+- Ability to find the bootstrap password (Rancher >=v2.6)
+- Short flag for deleting container(s) and volume(s)
 
 ## [0.1.1] - 2021-08-25
 
