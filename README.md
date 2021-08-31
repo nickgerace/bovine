@@ -5,7 +5,7 @@
 [![build](https://img.shields.io/github/workflow/status/nickgerace/bovine/merge?style=flat-square)](https://github.com/nickgerace/bovine/actions)
 [![license](https://img.shields.io/github/license/nickgerace/bovine?style=flat-square&color=purple)](./LICENSE)
 
-Manage single node Rancher clusters with a single binary, `bovine`.
+Manage single node [Rancher](https://rancher.com/) clusters with a single binary, `bovine`.
 
 ```
 % bovine run
@@ -231,3 +231,8 @@ Some notes that may provide context:
 - Even if the above points were non-existent, `bovine` tries to make the Kubernetes and/or Rancher experience easier for newcomers.
   - Sometimes, a small abstraction makes the difference between a user trying out and hesitantly skipping underlying software.
 - `bovine` provides one-button automation, such as stopping, deleting, and removing volumes for containers without affecting other containers and without checking IDs.
+
+## Disclaimer
+
+`bovine` is not an official [SUSE](https://suse.com) or [Rancher Labs](https://rancher.com) product at this time.
+While it is intended for "real world use" among other purposes described throughout this `README`, it is independently maintained.
