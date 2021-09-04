@@ -94,6 +94,13 @@ pub struct Logs {
         about = "Display the entire log line where the bootstrap password was found"
     )]
     pub verbose: bool,
+    #[clap(
+        long,
+        short,
+        requires = "find-bootstrap-password",
+        about = "Wait for the bootstrap password log to appear"
+    )]
+    pub wait: bool,
 }
 
 #[derive(Clap, Debug)]

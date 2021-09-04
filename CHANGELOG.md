@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 <!-- The latest version contains all changes. -->
 
+### Added
+
+- Wait flag when finding the bootstrap password
+
 ### Changed
 
 - The version command to print valid JSON rather than invalid YAML (previous implementation)

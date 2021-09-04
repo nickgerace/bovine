@@ -23,7 +23,9 @@ pub async fn logs(opt: &Logs, docker_socket_path: Option<String>) -> Result<()> 
         &id,
         Some(LogsOptions {
             follow: match opt.find_bootstrap_password {
-                true => false,
+                // If we are looking for the boostrap password and would like to wait, we need to
+                // set follow to true.
+                true => opt.wait,
                 false => opt.follow,
             },
             stdout: true,
