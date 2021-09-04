@@ -29,7 +29,7 @@ async fn main() -> Result<()> {
         SubCommand::Run(o) => commands::run::run(&o, opt.docker_socket_path).await?,
         SubCommand::Stop(o) => commands::stop::stop(&o, opt.docker_socket_path).await?,
         SubCommand::Upgrade(o) => commands::upgrade::upgrade(&o, opt.docker_socket_path).await?,
-        SubCommand::Version(o) => commands::version::version(&o, opt.docker_socket_path).await,
+        SubCommand::Version(o) => commands::version::version(&o, opt.docker_socket_path).await?,
     }
     Ok(())
 }
