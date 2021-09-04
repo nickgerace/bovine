@@ -21,12 +21,16 @@ pub struct DockerVersion {
     #[serde(rename(serialize = "os/arch"))]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub os_arch: Option<String>,
+    #[serde(rename(serialize = "api-version"))]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub api_version: Option<String>,
+    #[serde(rename(serialize = "linux-kernel-version"))]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub linux_kernel_version: Option<String>,
+    #[serde(rename(serialize = "git-commit"))]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub git_commit: Option<String>,
+    #[serde(rename(serialize = "docker-socket-path"))]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub docker_socket_path: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
