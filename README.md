@@ -171,9 +171,9 @@ Let's print that information out, just to get the hang of it.
   "docker": {
     "version": "20.10.8",
     "os/arch": "linux/amd64",
-    "api_version": "1.41",
-    "linux_kernel_version": "5.11.0-27-generic",
-    "git_commit": "75249d8"
+    "api-version": "1.41",
+    "linux-kernel-version": "5.11.0-27-generic",
+    "git-commit": "75249d8"
   }
 }
 
@@ -192,10 +192,10 @@ Let's try it on a Linux host.
   "docker": {
     "version": "20.10.8",
     "os/arch": "linux/amd64",
-    "api_version": "1.41",
-    "linux_kernel_version": "5.11.0-27-generic",
-    "git_commit": "75249d8"
-    "socket_path": "/foo/bar/docker.sock"
+    "api-version": "1.41",
+    "linux-kernel-version": "5.11.0-27-generic",
+    "git-commit": "75249d8"
+    "socket-path": "/foo/bar/docker.sock"
   }
 }
 ```
