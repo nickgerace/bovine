@@ -7,7 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-The latest version contains all changes.
+<!-- The latest version contains all changes. -->
+
+### Changed
+
+- The version command to print valid JSON rather than invalid YAML (previous implementation)
+- The version command to return an error if JSON pretty printing fails
 
 ## [0.1.2] - 2021-08-30
 
