@@ -15,16 +15,25 @@ mod util;
 #[tokio::main]
 async fn main() -> Result<()> {
     let opt = Opt::parse();
-    if opt.debug {
-        env::set_var("RUST_LOG", "debug");
-        env_logger::init();
-    } else if env::var("RUST_LOG").is_err() {
-        env::set_var("RUST_LOG", "info");
-        // Since we are using `INFO` logs for user messages, we want to print to STDOUT and not STDERR.
-        env_logger::builder()
-            .format(|buf, record| writeln!(buf, "{}", record.args()))
-            .target(env_logger::Target::Stdout)
-            .init();
+
+    // This match statement covers `RUST_LOG` inputs and sets the logger accordingly.
+    //
+    // If debug flag has been set:
+    // - override `RUST_LOG` regardless of its value --> standard mode
+    //
+    // Else:
+    // - user has not set `RUST_LOG` --> set to `info` --> user mode
+    // - user has disabled `RUST_LOG` --> set to `info` --> user mode
+    // - user has already set `RUST_LOG` to `info` --> no level change --> user mode
+    // - user has set `RUST_LOG` above `info` --> no level change --> standard mode
+    match opt.debug {
+        true => start_env_logger(false, Some("debug")),
+        false => match env::var("RUST_LOG") {
+            Err(_) => start_env_logger(true, Some("info")),
+            Ok(o) if o == "off" => start_env_logger(true, Some("info")),
+            Ok(o) if o == "info" => start_env_logger(true, None),
+            Ok(_) => start_env_logger(false, None),
+        },
     }
 
     match opt.subcmd {
@@ -39,4 +48,21 @@ async fn main() -> Result<()> {
         SubCommand::Version(o) => commands::version::version(&o, opt.docker_socket_path).await?,
     }
     Ok(())
+}
+
+fn start_env_logger(user_mode: bool, set_level: Option<&str>) {
+    if let Some(s) = set_level {
+        env::set_var("RUST_LOG", s);
+    }
+    match user_mode {
+        true => {
+            // Since we are using `INFO` logs for user messages, we want to print to STDOUT and not STDERR.
+            // In this mode, we want the `INFO` logs to perform similarly to standard print statements.
+            env_logger::builder()
+                .format(|buf, record| writeln!(buf, "{}", record.args()))
+                .target(env_logger::Target::Stdout)
+                .init()
+        }
+        false => env_logger::init(),
+    }
 }
