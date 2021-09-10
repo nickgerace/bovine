@@ -39,14 +39,27 @@ Customize your Docker installation to your liking since `bovine` does not requir
 
 ## Installation
 
-`bovine` is designed to work on any tier one Rust platform that can interface with Docker.
-You can install and [upgrade](./docs/EXTRA.md) the application by using `cargo`.
+There are two primary methods for installing `bovine`.
+
+### Cargo (recommended)
+
+`bovine` is designed to work on any tier one Rust platform with access to the Docker daemon.
+You can install and upgrade the application by using `cargo`.
 
 ```sh
 cargo install bovine
 ```
 
-You can install `cargo` via [rustup](https://rustup.rs/) (recommended) or your preferred package manager.
+Keeping the crate up to date is easy with [cargo-update](https://crates.io/crates/cargo-update).
+
+```sh
+cargo install cargo-update
+cargo install-update -a
+```
+
+`cargo` can be installed with [rustup](https://rustup.rs/) (recommended) or your preferred package manager.
+
+### Binary from Release
 
 If you do not want to install `cargo`, you can download a binary from the [releases page](https://github.com/nickgerace/bovine/releases).
 The following convenience script can be used on macOS and Linux `amd64` systems (requires `wget`, `jq`, and `curl` to be installed):
