@@ -1,6 +1,7 @@
 use crate::{consts, docker, error::Error, rancher, types::cli::Upgrade, util};
 use anyhow::Result;
 use bollard::{container::Config, models::HostConfig};
+use log::info;
 
 pub async fn upgrade(opt: &Upgrade, docker_socket_path: Option<String>) -> Result<()> {
     let docker = docker::docker_client(docker_socket_path).await?;
@@ -35,7 +36,7 @@ pub async fn upgrade(opt: &Upgrade, docker_socket_path: Option<String>) -> Resul
 
     docker::stop_container(&docker, &opt.container_id, false).await?;
     let volumes_from = vec![opt.container_id.to_owned()];
-    println!(
+    info!(
         "Created temporary container for volume backup: {}",
         util::get_first_n_chars(
             docker
@@ -64,6 +65,6 @@ pub async fn upgrade(opt: &Upgrade, docker_socket_path: Option<String>) -> Resul
         rancher::build_config(config.clone(), host_config.clone(), Some(volumes_from)),
     )
     .await?;
-    println!("Upgrade from [{}] to [{}] complete", old_image, new_image);
+    info!("Upgrade from [{}] to [{}] complete", old_image, new_image);
     Ok(())
 }

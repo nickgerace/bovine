@@ -48,7 +48,8 @@ Having said that, this design point is subject to change.
 ## Style Guide
 
 Executing `cargo +nightly fmt` within the repository should suffice for most users.
-However, logging and printing to `STDOUT` require manual review:
+However, logging and printing requires manual review for style:
 
-- **logging**: log messages should start with lowercase letters and _usually_ not end with punctuation
-- **printing**: user messages printed to `STDOUT` are flexible in their style, but should start with uppercase letters when possible
+- **logging (non-`INFO`)**: log messages should start with lowercase letters and _usually_ not end with punctuation
+- **logging (`INFO`)**: user messages intended for the user (`INFO`) are flexible in their style, but should start with uppercase letters when possible
+- **printing**: printing directly to `STDOUT` or `STDERR` is only permitted when re-printing a formatted log

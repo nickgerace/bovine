@@ -11,6 +11,7 @@ use bollard::{
     },
     Docker,
 };
+use log::info;
 use std::collections::HashMap;
 
 pub async fn launch_rancher(docker: Docker, config: Config<String>) -> Result<()> {
@@ -19,7 +20,7 @@ pub async fn launch_rancher(docker: Docker, config: Config<String>) -> Result<()
         .await?
         .id;
     docker.start_container::<String>(&id, None).await?;
-    println!(
+    info!(
         "Rancher container is running: {}",
         util::get_first_n_chars(id, 12)
     );

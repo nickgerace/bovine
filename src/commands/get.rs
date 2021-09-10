@@ -1,5 +1,6 @@
 use crate::{consts::platform::NEWLINE, docker, error::Error, rancher, types::cli::Get};
 use anyhow::Result;
+use log::info;
 
 pub async fn get(opt: &Get, docker_socket_path: Option<String>) -> Result<()> {
     let docker = docker::docker_client(docker_socket_path).await?;
@@ -7,7 +8,7 @@ pub async fn get(opt: &Get, docker_socket_path: Option<String>) -> Result<()> {
 
     match &inspection.state {
         Some(s) => {
-            println!(
+            info!(
                 "{},{}{}",
                 serde_json::to_string_pretty(&rancher::build_config(
                     match inspection.config {

@@ -3,6 +3,9 @@ use anyhow::Result;
 use bollard::container::LogsOptions;
 use futures::StreamExt;
 
+// We do not want to log a formatted log, so we print directly to STDOUT and STDERR as needed.
+// In addition, we want to send stream errors to STDERR, and _all_ given logs to STDOUT.
+// This pattern would be difficult to make user friendly (and maintaible) if implemented with logging.
 pub async fn logs(opt: &Logs, docker_socket_path: Option<String>) -> Result<()> {
     let docker = docker::docker_client(docker_socket_path).await?;
 

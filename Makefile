@@ -3,16 +3,15 @@ BINARY:=$(MAKEPATH)/target/release/bovine
 
 all: prepare build
 
-final: update prepare scan build
+final: prepare scan build
 
 debug: prepare
 	cd $(MAKEPATH); cargo build
 
 build:
 	cd $(MAKEPATH); cargo build --release
-	du -h $(BINARY)
-	strip $(BINARY)
-	du -h $(BINARY)
+	@du -h $(BINARY)
+	@du $(BINARY)
 
 prepare:
 	cd $(MAKEPATH); cargo update
@@ -33,3 +32,8 @@ release:
 	cd $(MAKEPATH); cargo clippy -- -D warnings
 	cd $(MAKEPATH); cargo test -- --nocapture
 	cd $(MAKEPATH); cargo build --release
+
+compare:
+	cd $(MAKEPATH); cargo build --release
+	@du $(BINARY)
+	@du ~/.cargo/bin/bovine

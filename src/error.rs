@@ -40,4 +40,8 @@ pub enum Error {
     StopOrDeleteContainerNotProvided,
     #[error("container ID must be provided or at least one running Rancher container must exist")]
     LogsContainerNotProvided,
+    #[error(
+        "cannot use debug logging while following container logs (risk of logging a formatted log)"
+    )]
+    LogsDebugModeEnabled,
 }

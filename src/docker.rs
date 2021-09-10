@@ -12,7 +12,7 @@ use bollard::{
     Docker, API_DEFAULT_VERSION,
 };
 use futures::TryStreamExt;
-use log::{debug, error};
+use log::{debug, error, info};
 use std::collections::HashMap;
 
 pub async fn docker_client(socket_path: Option<String>) -> Result<Docker, Error> {
@@ -62,10 +62,10 @@ pub async fn stop_container(docker: &Docker, container_id: &str, delete: bool) -
         true => {
             debug!("processing container for stop: {}", container_id);
             match docker.stop_container(container_id, None).await {
-                Ok(_) => println!("Stopped Rancher container: {}", container_id),
+                Ok(_) => info!("Stopped Rancher container: {}", container_id),
                 Err(e) => match e {
                     DockerResponseNotModifiedError { message: _ } => {
-                        println!(
+                        info!(
                             "Container not modified (may have already been stopped): {}",
                             container_id
                         )
@@ -79,10 +79,10 @@ pub async fn stop_container(docker: &Docker, container_id: &str, delete: bool) -
             if delete {
                 debug!("processing container for delete: {}", container_id);
                 match docker.remove_container(container_id, None).await {
-                    Ok(_) => println!("Deleted Rancher container: {}", container_id),
+                    Ok(_) => info!("Deleted Rancher container: {}", container_id),
                     Err(e) => match e {
                         DockerResponseNotFoundError { message: _ } => {
-                            println!(
+                            info!(
                                 "Container not found (may have already been deleted): {}",
                                 container_id
                             )
@@ -106,7 +106,7 @@ pub async fn stop_container(docker: &Docker, container_id: &str, delete: bool) -
                         }
                     }
                 }
-                println!("Deleted volumes for container: {}", container_id);
+                info!("Deleted volumes for container: {}", container_id);
             }
             Ok(())
         }
@@ -147,15 +147,15 @@ pub async fn pull_image(docker: &Docker, image: &str, force_pull: bool) -> Resul
     {
         Ok(o) => match o.is_empty() {
             true => {
-                println!("Pulling [{}], this may take awhile...", image);
+                info!("Pulling [{}], this may take awhile...", image);
                 pull_image_helper(docker, image).await
             }
             false if force_pull => {
-                println!("Force pulling [{}], this may take awhile...", image);
+                info!("Force pulling [{}], this may take awhile...", image);
                 pull_image_helper(docker, image).await
             }
             false => {
-                println!("Image found locally: [{}]", image);
+                info!("Image found locally: [{}]", image);
                 Ok(())
             }
         },
