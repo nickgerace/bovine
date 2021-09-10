@@ -7,7 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-The latest version contains all changes.
+<!-- The latest version contains all changes. -->
+
+### Changed
+
+- All direct-to-STDOUT statements to use `INFO` logging (except when printing formatted logs)
+
+### Removed
+
+- The ability to run in debug mode while using the `logs` subcommand (avoid logging a formatted log)
 
 ## [0.2.0] - 2021-09-04
 

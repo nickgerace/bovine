@@ -1,12 +1,13 @@
 use crate::{docker, error::Error, types::cli::Stop};
 use anyhow::Result;
+use log::info;
 
 pub async fn stop(opt: &Stop, docker_socket_path: Option<String>) -> Result<()> {
     let docker = docker::docker_client(docker_socket_path).await?;
     match &opt.container_id {
         Some(id) => match opt.dry_run {
             true => {
-                println!("{}", &id);
+                info!("{}", &id);
                 Ok(())
             }
             false => docker::stop_container(&docker, id, opt.delete).await,
@@ -20,7 +21,7 @@ pub async fn stop(opt: &Stop, docker_socket_path: Option<String>) -> Result<()> 
             // non-running containers.
             for list_item in docker::list(&docker, true, !opt.delete).await? {
                 match opt.dry_run {
-                    true => println!("{}", &list_item),
+                    true => info!("{}", &list_item),
                     false => docker::stop_container(&docker, &list_item, opt.delete).await?,
                 }
             }

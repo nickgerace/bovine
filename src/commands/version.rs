@@ -5,14 +5,14 @@ use crate::{
     util,
 };
 use anyhow::Result;
-use log::error;
+use log::{error, info};
 use serde_json;
 use std::env::consts;
 
 pub async fn version(opt: &cli::Version, docker_socket_path: Option<String>) -> Result<()> {
     match opt.short {
         true => {
-            println!("{}", VERSION);
+            info!("{}", VERSION);
             Ok(())
         }
         false => full_version(docker_socket_path).await,
@@ -20,7 +20,7 @@ pub async fn version(opt: &cli::Version, docker_socket_path: Option<String>) -> 
 }
 
 async fn full_version(docker_socket_path: Option<String>) -> Result<()> {
-    println!(
+    info!(
         "{}",
         serde_json::to_string_pretty(&version::Version {
             bovine: version::BovineVersion {

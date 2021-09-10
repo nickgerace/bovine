@@ -4,6 +4,7 @@ use bollard::{
     container,
     models::{HostConfig, PortBinding, RestartPolicy, RestartPolicyNameEnum},
 };
+use log::info;
 use std::collections::HashMap;
 
 pub async fn run(opt: &Run, docker_socket_path: Option<String>) -> Result<()> {
@@ -118,7 +119,7 @@ pub async fn run(opt: &Run, docker_socket_path: Option<String>) -> Result<()> {
     };
 
     match opt.dry_run {
-        true => println!("{}", serde_json::to_string_pretty(&container_config)?),
+        true => info!("{}", serde_json::to_string_pretty(&container_config)?),
         false => {
             let docker = docker::docker_client(docker_socket_path).await?;
             docker::pull_image(&docker, &image, opt.common.force_pull).await?;
