@@ -1,8 +1,10 @@
+use crate::consts::package::VERSION;
 use clap::{AppSettings, Clap};
 
 #[derive(Clap)]
 #[clap(
     name = "bovine",
+    version = VERSION,
     about = "Manager for single node Rancher clusters: https://github.com/nickgerace/bovine",
     global_setting = AppSettings::ColorNever,
     global_setting = AppSettings::DisableVersionFlag,
