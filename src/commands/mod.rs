@@ -1,3 +1,4 @@
+pub mod bootstrappw;
 pub mod get;
 pub mod list;
 pub mod logs;

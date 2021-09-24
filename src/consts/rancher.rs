@@ -10,4 +10,4 @@ pub const PRIVATE_KEY: &str = "/etc/rancher/ssl/key.pem";
 pub const SSL_CERT_DIR: &str = "SSL_CERT_DIR=\"/container/certs\"";
 pub const VAR_LIB_RANCHER: &str = "/var/lib/rancher";
 
-pub const BOOTSTRAP_PASSWORD_SEARCH: &str = "Bootstrap Password: ";
+pub const BOOTSTRAP_PASSWORD_SEARCH_TERM: &str = "Bootstrap Password: ";

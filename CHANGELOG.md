@@ -7,7 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-The latest version contains all changes.
+<!-- The latest version contains all changes. -->
+
+### Added
+
+- Independent bootstrap password command from the original `logs` subcommand
+
+### Removed
+
+- Bootstrap password flags and functionality for `logs` subcommand
 
 ## [0.3.0] - 2021-09-10
 
