@@ -25,6 +25,11 @@ pub struct Opt {
 #[derive(Clap)]
 pub enum SubCommand {
     #[clap(
+        name = "bootstrap-password",
+        about = "Find and display the bootstrap password (Rancher >=v2.6)"
+    )]
+    BootstrapPW(BootstrapPW),
+    #[clap(
         name = "get",
         about = "Get and display information for a given Rancher container (JSON)"
     )]
@@ -61,6 +66,22 @@ pub enum SubCommand {
 }
 
 #[derive(Clap, Debug)]
+pub struct BootstrapPW {
+    #[clap(
+        about = "ID of the Rancher container running or not-running (if empty, it will select a Rancher container at random, which is useful when only one container is running)"
+    )]
+    pub container_id: Option<String>,
+    #[clap(
+        long,
+        short,
+        about = "Display the entire log line where the bootstrap password was found"
+    )]
+    pub verbose: bool,
+    #[clap(long, short, about = "Wait for the bootstrap password log to appear")]
+    pub wait: bool,
+}
+
+#[derive(Clap, Debug)]
 pub struct Get {
     #[clap(about = "ID of the Rancher container running")]
     pub container_id: String,
@@ -82,27 +103,6 @@ pub struct Logs {
     pub container_id: Option<String>,
     #[clap(long, short, about = "Follow logs")]
     pub follow: bool,
-    #[clap(
-        long,
-        short = 'p',
-        visible_aliases = &["password", "pw"],
-        about = "Attempt to find the bootstrap password (>=v2.6) (caution: finding the bootstrap password relies on parsing Rancher logs and is not an API call)"
-    )]
-    pub find_bootstrap_password: bool,
-    #[clap(
-        long,
-        short,
-        requires = "find-bootstrap-password",
-        about = "Display the entire log line where the bootstrap password was found"
-    )]
-    pub verbose: bool,
-    #[clap(
-        long,
-        short,
-        requires = "find-bootstrap-password",
-        about = "Wait for the bootstrap password log to appear"
-    )]
-    pub wait: bool,
 }
 
 #[derive(Clap, Debug)]

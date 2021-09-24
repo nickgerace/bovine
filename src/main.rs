@@ -37,6 +37,9 @@ async fn main() -> Result<()> {
     }
 
     match opt.subcmd {
+        SubCommand::BootstrapPW(o) => {
+            commands::bootstrappw::bootstrappw(&o, opt.docker_socket_path).await?
+        }
         SubCommand::Get(o) => commands::get::get(&o, opt.docker_socket_path).await?,
         SubCommand::List(o) => commands::list::list(&o, opt.docker_socket_path).await?,
         SubCommand::Logs(_) if opt.debug => return Err(Error::LogsDebugModeEnabled.into()),

@@ -114,6 +114,22 @@ pub async fn stop_container(docker: &Docker, container_id: &str, delete: bool) -
     }
 }
 
+pub async fn get_container_id_greedy(
+    docker: &Docker,
+    container_id: &Option<String>,
+) -> Result<String> {
+    match container_id {
+        Some(s) => Ok(s.to_string()),
+        None => {
+            let containers = list(docker, true, true).await?;
+            match containers.len() {
+                0 => Err(Error::LogsContainerNotProvided.into()),
+                _ => Ok(containers[0].clone()),
+            }
+        }
+    }
+}
+
 pub async fn pull_image(docker: &Docker, image: &str, force_pull: bool) -> Result<(), Error> {
     async fn pull_image_helper(docker: &Docker, image: &str) -> Result<(), Error> {
         match docker
