@@ -13,17 +13,11 @@ Users dependencies are specified in the [README](../README.md).
   - This is only used for formatting and external tooling.
   - `bovine` does not depend on nightly.
 
-You may need to install external crates in use by the Makefile.
-
 ## Building
 
 Building `bovine` should be possible on every tier one platform that Rust supports with no restriction on multi-platform development.
-
-### In that case, why a Makefile?
-
-This repository leverages an optional Makefile for common developer workflows.
-It is "optional" because it's primarily a wrapper for `cargo` commands.
-Makefiles are not ideal for multi-platform use, so our Makefile is designed to be as readable as possible for environments where `make` is not preferred.
+We use `cargo xtask` for automation, which only requires `cargo` to be installed to work.
+For ease of use, you can alias `cargo xtask` to `cx` or something similar.
 
 ## Design Considerations
 
