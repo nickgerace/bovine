@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Independent bootstrap password command from the original `logs` subcommand
 
+### Changed
+
+- Many "behind the scenes" and repository functions, which include switching from `make` to `cargo xtask`
+
 ### Removed
 
 - Bootstrap password flags and functionality for `logs` subcommand

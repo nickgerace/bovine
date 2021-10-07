@@ -22,6 +22,7 @@ Stopped Rancher container: ead7ff0c711a
 ## Background
 
 `bovine` is simultaneously designed to be an accessible entrypoint into using both Rancher (and Kubernetes) and an efficient manager for experienced users working with single node Rancher clusters.
+It works by communicating directly with the Docker daemon in order to create, upgrade, stop, delete, and manage single node Rancher clusters.
 
 - New to Rancher or Kubernetes?
   - `bovine` aims to be one of the first stepping stones into trying both technologies for the first time.
@@ -148,7 +149,7 @@ When using localhost tunneling (e.g [ngrok](https://ngrok.com/)), you may need t
 If you are working with Rancher >=v2.6, you may need to find the bootstrap password in order to access the dashboard.
 
 ```
-% bovine logs -p
+% bovine bootstrap-password --wait
 ```
 
 You can also set the bootstrap password upon startup.
