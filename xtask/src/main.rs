@@ -74,10 +74,10 @@ fn bloat() -> Result<()> {
 }
 
 fn ci() -> Result<()> {
-    cargo(&["+nightly", "fmt", "--all", "--", "--checks"])?;
+    cargo(&["+nightly", "fmt", "--all", "--", "--check"])?;
     cargo(&["clippy", "--", "-D", "warnings"])?;
     cargo(&["test", "--", "--nocapture"])?;
-    cargo(&["clippy", "--", "-D", "warnings"])
+    cargo(&["build", "--release"])
 }
 
 fn compare() -> Result<()> {
