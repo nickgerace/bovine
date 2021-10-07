@@ -19,7 +19,7 @@ This checklist details the `bovine` release process.
 ### Release Time
 
 - [ ] Once the prepation commit has been pushed (or merged) into `main`, checkout and/or update `main`.
-- [ ] Tag with `git tag $NEW_TAG` and push the tag: `git push --tags origin main`.
+- [ ] Tag with `git tag` and push the new tag: `git push --tags origin main`.
 - [ ] Now, publish the crate: `cargo publish`.
 
 ### Post Release
