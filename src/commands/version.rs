@@ -2,10 +2,9 @@ use crate::{
     consts::package::VERSION,
     docker,
     types::{cli, version},
-    util,
 };
 use anyhow::Result;
-use log::{error, info};
+use log::info;
 use serde_json;
 use std::env::consts;
 
@@ -39,17 +38,13 @@ async fn full_version(docker_socket_path: Option<String>) -> Result<()> {
                         linux_kernel_version: version.kernel_version,
                         git_commit: version.git_commit,
                         docker_socket_path,
+                        raw_error: None,
                         error: None,
+                        help: None,
                     },
-                    Err(e) => {
-                        util::log_bollard_error(&e);
-                        version::new_docker_version_with_connection_failure()
-                    }
+                    Err(e) => version::new_docker_version_with_connection_failure(Some(e), None),
                 },
-                Err(e) => {
-                    error!("{}", e);
-                    version::new_docker_version_with_connection_failure()
-                }
+                Err(e) => version::new_docker_version_with_connection_failure(None, Some(e)),
             },
         })?
     );

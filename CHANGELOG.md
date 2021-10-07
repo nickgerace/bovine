@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - Many "behind the scenes" and repository functions, which include switching from `make` to `cargo xtask`
+- Version subcommand output to include permissions errors
 
 ### Removed
 
