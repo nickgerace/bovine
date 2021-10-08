@@ -1,6 +1,6 @@
 [package]
 name = "bovine"
-version = "1.0.0-rc2"
+version = "1.0.0"
 edition = "2018"
 
 authors = ["Nick Gerace <nickagerace@gmail.com>"]

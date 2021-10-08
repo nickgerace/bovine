@@ -19,7 +19,7 @@ ead7ff0c711a [rancher/rancher:latest] (running) > Up 5 seconds
 Stopped Rancher container: ead7ff0c711a
 ```
 
-## Background
+## Description
 
 `bovine` is simultaneously designed to be an accessible entrypoint into using both Rancher (and Kubernetes) and an efficient manager for experienced users working with single node Rancher clusters.
 It works by communicating directly with the Docker daemon in order to create, upgrade, stop, delete, and manage single node Rancher clusters.
@@ -179,18 +179,17 @@ Let's print that information out, just to get the hang of it.
 % bovine version
 {
   "bovine": {
-    "version": "0.1.2",
+    "version": "1.0.0",
     "os/arch": "linux/x86_64"
   },
   "docker": {
-    "version": "20.10.8",
+    "version": "20.10.9",
     "os/arch": "linux/amd64",
     "api-version": "1.41",
-    "linux-kernel-version": "5.11.0-27-generic",
-    "git-commit": "75249d8"
+    "linux-kernel-version": "5.10.0-1049-oem",
+    "git-commit": "79ea9d3"
   }
 }
-
 ```
 
 If you are using a custom socket path, `bovine` will confirm that the information was gathered from there.
@@ -200,16 +199,16 @@ Let's try it on a Linux host.
 % bovine --docker-socket-path /foo/bar/docker.sock version
 {
   "bovine": {
-    "version": "0.1.2",
+    "version": "1.0.0",
     "os/arch": "linux/x86_64"
   },
   "docker": {
-    "version": "20.10.8",
+    "version": "20.10.9",
     "os/arch": "linux/amd64",
     "api-version": "1.41",
-    "linux-kernel-version": "5.11.0-27-generic",
-    "git-commit": "75249d8"
-    "socket-path": "/foo/bar/docker.sock"
+    "linux-kernel-version": "5.10.0-1049-oem",
+    "git-commit": "79ea9d3",
+    "docker-socket-path": "/foo/bar/docker.sock"
   }
 }
 ```
@@ -221,7 +220,7 @@ Maybe Docker is the issue in your troubleshooting session?
 % bovine version
 {
   "bovine": {
-    "version": "0.1.2",
+    "version": "1.0.0",
     "os/arch": "linux/x86_64"
   },
   "docker": {

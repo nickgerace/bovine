@@ -7,10 +7,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-<!-- The latest version contains all changes. -->
+The latest version contains all changes.
+
+## [1.0.0] - 2021-10-09
 
 ### Added
 
+- Ability to handle all environment usages of `RUST_LOG`
 - Independent bootstrap password command from the original `logs` subcommand
 
 ### Changed
