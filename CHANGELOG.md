@@ -14,6 +14,7 @@ The latest version contains all changes.
 ### Added
 
 - Ability to handle all environment usages of `RUST_LOG`
+- Homebrew install for macOS users
 - Independent bootstrap password command from the original `logs` subcommand
 
 ### Changed

@@ -40,7 +40,7 @@ Customize your Docker installation to your liking since `bovine` does not requir
 
 ## Installation
 
-There are two primary methods for installing `bovine`.
+There are three primary methods for installing `bovine`.
 
 ### Cargo (recommended)
 
@@ -59,6 +59,16 @@ cargo install-update -a
 ```
 
 `cargo` can be installed with [rustup](https://rustup.rs/) (recommended) or your preferred package manager.
+
+### Homebrew Install (macOS only)
+
+You can use [Homebrew](https://brew.sh) to install the [tap](https://github.com/nickgerace/homebrew-nickgerace/blob/main/Formula/bovine.rb).
+
+```sh
+brew install nickgerace/nickgerace/bovine
+```
+
+_Note: this tap may not work with [Linuxbrew](https://docs.brew.sh/Homebrew-on-Linux)._
 
 ### Binary from Release
 
