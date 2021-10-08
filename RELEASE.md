@@ -27,3 +27,4 @@ This checklist details the `bovine` release process.
 - [ ] Check the [crate](https://crates.io/crates/bovine) on `crates.io`.
 - [ ] Download the crate via `cargo install bovine` or `cargo install --version <tag> bovine`
 - [ ] Check the [release](https://github.com/nickgerace/bovine/releases) on the repository's releases page.
+- [ ] Update the [tap](https://github.com/nickgerace/homebrew-nickgerace) for Homebrew users
