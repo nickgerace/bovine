@@ -24,8 +24,8 @@ serde_json = "1"
 thiserror = "1"
 
 # Add features as needed: ["color", "unicode_help", "cargo"]
-# Source: https://github.com/clap-rs/clap/tree/v3.0.0-beta.4#optional-dependencies--features
-clap = { version = "3.0.0-beta.4", features = ["derive", "std", "suggestions"], default_features = false }
+# Source: https://github.com/clap-rs/clap/tree/v3.0.0-beta.5#optional-dependencies--features
+clap = { version = "3.0.0-beta.5", features = ["derive", "std", "suggestions"], default_features = false }
 
 # Add features as needed: ["termcolor", "regex"]
 # Source: https://github.com/env-logger-rs/env_logger/blob/main/Cargo.toml#L47

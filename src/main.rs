@@ -1,6 +1,6 @@
 use crate::error::Error;
 use anyhow::Result;
-use clap::Clap;
+use clap::Parser;
 use std::{env, io::Write};
 use types::cli::{Opt, SubCommand};
 

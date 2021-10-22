@@ -1,12 +1,11 @@
 use crate::consts::package::VERSION;
-use clap::{AppSettings, Clap};
+use clap::{AppSettings, Parser};
 
-#[derive(Clap)]
+#[derive(Parser)]
 #[clap(
     name = "bovine",
     version = VERSION,
     about = "Manager for single node Rancher clusters: https://github.com/nickgerace/bovine",
-    global_setting = AppSettings::ColorNever,
     global_setting = AppSettings::DisableVersionFlag,
 )]
 pub struct Opt {
@@ -22,7 +21,7 @@ pub struct Opt {
     pub subcmd: SubCommand,
 }
 
-#[derive(Clap)]
+#[derive(Parser)]
 pub enum SubCommand {
     #[clap(
         name = "bootstrap-password",
@@ -65,7 +64,7 @@ pub enum SubCommand {
     Version(Version),
 }
 
-#[derive(Clap, Debug)]
+#[derive(Parser, Debug)]
 pub struct BootstrapPW {
     #[clap(
         about = "ID of the Rancher container running or not-running (if empty, it will select a Rancher container at random, which is useful when only one container is running)"
@@ -81,13 +80,13 @@ pub struct BootstrapPW {
     pub wait: bool,
 }
 
-#[derive(Clap, Debug)]
+#[derive(Parser, Debug)]
 pub struct Get {
     #[clap(about = "ID of the Rancher container running")]
     pub container_id: String,
 }
 
-#[derive(Clap, Debug)]
+#[derive(Parser, Debug)]
 pub struct List {
     #[clap(long, short, about = "Show only containing that are running")]
     pub running: bool,
@@ -95,7 +94,7 @@ pub struct List {
     pub short: bool,
 }
 
-#[derive(Clap, Debug)]
+#[derive(Parser, Debug)]
 pub struct Logs {
     #[clap(
         about = "ID of the Rancher container running or not-running (if empty, it will select a Rancher container at random, which is useful when only one container is running)"
@@ -105,13 +104,13 @@ pub struct Logs {
     pub follow: bool,
 }
 
-#[derive(Clap, Debug)]
+#[derive(Parser, Debug)]
 pub struct Restart {
     #[clap(about = "ID of the Rancher container running")]
     pub container_id: String,
 }
 
-#[derive(Clap, Debug)]
+#[derive(Parser, Debug)]
 pub struct Run {
     #[clap(long, about = "Display the Docker API container config (JSON)")]
     pub dry_run: bool,
@@ -133,7 +132,7 @@ pub struct Run {
     pub common: LaunchFlags,
 }
 
-#[derive(Clap, Debug)]
+#[derive(Parser, Debug)]
 pub struct Stop {
     #[clap(
         long,
@@ -153,7 +152,7 @@ pub struct Stop {
     pub dry_run: bool,
 }
 
-#[derive(Clap, Debug)]
+#[derive(Parser, Debug)]
 pub struct Upgrade {
     #[clap(about = "ID of the Rancher container running")]
     pub container_id: String,
@@ -169,14 +168,14 @@ pub struct Upgrade {
     pub common: LaunchFlags,
 }
 
-#[derive(Clap, Debug)]
+#[derive(Parser, Debug)]
 pub struct Version {
     #[clap(long, short, about = "Display only the version tag")]
     pub short: bool,
 }
 
 // Subcommands using these flags should likely be "boxed": https://rust-lang.github.io/rust-clippy/master/index.html#large_enum_variant
-#[derive(Clap, Debug)]
+#[derive(Parser, Debug)]
 pub struct LaunchFlags {
     #[clap(
         long,
