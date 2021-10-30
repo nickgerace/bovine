@@ -16,8 +16,7 @@ Users dependencies are specified in the [README](../README.md).
 ## Building
 
 Building `bovine` should be possible on every tier one platform that Rust supports with no restriction on multi-platform development.
-We use `cargo xtask` for automation, which only requires `cargo` to be installed to work.
-For ease of use, you can alias `cargo xtask` to `cx` or something similar.
+We use GNU/BSD `make` for automation, but it's entirely optional as nearly all commands ran are `cargo` commands.
 
 ## Design Considerations
 

@@ -10,7 +10,7 @@ This checklist details the `bovine` release process.
 
 - [ ] Checkout (or create a branch of) `main` at its latest commit.
 - [ ] Change the `version` field in `Cargo.toml` to the new tag.
-- [ ] Run `cargo xtask ci` and verify that everything looks/works as expected.
+- [ ] Run `make ci` and verify that everything looks/works as expected.
 - [ ] (Skip for release candidates) change the version in `CHANGELOG.md` and uncomment the line, `<!--The latest version contains all changes.-->`.
 - [ ] Create a commit with the following message `Update to <new-tag>`. Do not push (or merge) the commit.
 - [ ] Test and verify the publishing workflow: `cargo publish --dry-run`.

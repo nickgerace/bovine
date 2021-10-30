@@ -7,13 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-<-- The latest version contains all changes.-->
+The latest version contains all changes.
+
+## [1.0.2] - 2021-10-29
 
 ### Changed
 
 - Misc package bumps
 
-## [1.0.1] - 2020-10-21
+## [1.0.1] - 2021-10-21
 
 ### Changed
 
