@@ -1,49 +1,6 @@
-[package]
-name = "bovine"
-version = "1.0.2"
-edition = "2021"
-
-authors = ["Nick Gerace <nickagerace@gmail.com>"]
-categories = ["command-line-utilities", "development-tools"]
-description = "Manager for single node Rancher clusters"
-keywords = ["cli", "docker", "containers", "kubernetes", "rancher"]
-license = "Apache-2.0"
-readme = "README.md"
-
-documentation = "https://github.com/nickgerace/bovine"
-homepage = "https://github.com/nickgerace/bovine"
-repository = "https://github.com/nickgerace/bovine"
-
-[dependencies]
-anyhow = "1"
-bollard = { version = "0", default_features = false }
-futures = { version = "0", default_features = false }
-log = "0"
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-thiserror = "1"
-
-# Add features as needed: ["color", "unicode_help", "cargo"]
-# Source: https://github.com/clap-rs/clap/tree/v3.0.0-beta.5#optional-dependencies--features
-clap = { version = "3.0.0-beta.5", features = ["derive", "std", "suggestions"], default_features = false }
-
-# Add features as needed: ["termcolor", "regex"]
-# Source: https://github.com/env-logger-rs/env_logger/blob/main/Cargo.toml#L47
-env_logger = { version = "0", features = ["atty", "humantime"], default_features = false }
-
-# Add features as needed: ["time", "fs", "net", "rt", "rt-multi-thread", "io-std"]
-# Source: https://docs.rs/tokio/latest/tokio/#feature-flags
-tokio = { version = "1", features = ["macros"], default_features = false }
-
-[profile.dev]
-debug = 0
-
-[profile.release]
-codegen-units = 1
-
-# Instruct linker to optimize at the link stage.
-lto = true
-
-# There is a noticeable speed difference from level 3 to 'z' or 's'.
-# We need this speed for the user experience.
-opt-level = 3
+[workspace]
+members = [
+    "bovine-cli",
+    "bovine-server",
+    "bovine-api",
+]
