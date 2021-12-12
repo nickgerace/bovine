@@ -48,7 +48,7 @@ There are three primary methods for installing `bovine`.
 You can install and upgrade the application by using `cargo`.
 
 ```sh
-cargo install bovine
+cargo install --locked bovine
 ```
 
 Keeping the crate up to date is easy with [cargo-update](https://crates.io/crates/cargo-update).
