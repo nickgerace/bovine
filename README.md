@@ -1,3 +1,9 @@
+# DEPRECATION NOTICE
+
+This repository has been deprecated due to HA Rancher being preferred over its single node mode, even for developer use.
+If there's interest in unarchiving the repository, please let me know.
+Thank you for understanding.
+
 # Bovine
 
 [![release](https://img.shields.io/github/v/release/nickgerace/bovine?sort=semver&style=flat-square&logo=github&color=blue)](https://github.com/nickgerace/bovine/releases/latest)

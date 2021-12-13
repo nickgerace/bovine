@@ -4,6 +4,7 @@ version = "1.0.3"
 edition = "2021"
 
 authors = ["Nick Gerace <nickagerace@gmail.com>"]
+badges = ["deprecated"]
 categories = ["command-line-utilities", "development-tools"]
 description = "Manager for single node Rancher clusters"
 keywords = ["cli", "docker", "containers", "kubernetes", "rancher"]
